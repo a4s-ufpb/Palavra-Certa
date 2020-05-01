@@ -6,8 +6,23 @@ export default StyleSheet.create({
         backgroundColor: "#eee",
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 9,
         marginTop: 15
+    },
+    header: {
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        width: '100%',
+        height: '7%',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        marginTop: 16,
+        marginBottom: 16,
+        padding: 8
+    },
+    textHeader: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: 116
     },
     context:{
         width: 350,
@@ -20,7 +35,6 @@ export default StyleSheet.create({
     imageContext: {
         position: 'absolute',
         alignSelf: 'flex-start',
-        backgroundColor: 'red',
         width: 100,
         height: 100,
         marginLeft: 8,
@@ -35,6 +49,8 @@ export default StyleSheet.create({
     },
     contextName: {
         fontWeight: 'bold',
+        color: '#222',
+        textTransform: 'capitalize',
         fontSize: 20,
         alignSelf: 'center'
     },

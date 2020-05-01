@@ -12,8 +12,8 @@ export default function Routes(){
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{ headerShown: false }}>
-                <AppStack.Screen name="Home" component={Home} />
-                <AppStack.Screen name="Contexts" component={Contexts} />
+                <AppStack.Screen name="Home" component={Home}/>
+                <AppStack.Screen  name="Contexts" component={Contexts} />
                 <AppStack.Screen name="Challenge" component={Challenge} />
             </AppStack.Navigator>
         </NavigationContainer>

@@ -12,8 +12,7 @@ export default function Home(){
     const [user, setUser] = useState('');
 
     function navigateToContexts(user){
-        console.log(user)
-        navigation.navigate('Contexts', {user});
+        navigation.navigate('Contexts', { user });
     }
     return (
         <KeyboardAvoidingView  behavior='padding' style={styles.container}>

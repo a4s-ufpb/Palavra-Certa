@@ -13,6 +13,49 @@ export default function Home(){
     const [contexts, setContexts] = useState([]);
     const [loading, setLoading] = useState(false);
 
+    const DATA = [
+        {
+            id: 1,
+            name: 'escola',
+            description: 'objetos da escola'
+        },
+        {
+            id: 2,
+            name: 'casa',
+            description: 'objetos da casa'
+        },
+        {
+            id: 3,
+            name: 'aula',
+            description: 'objetos da aula'
+        },
+        {
+            id: 4,
+            name: 'planta',
+            description: 'objetos da planta'
+        },
+        {
+            id: 5,
+            name: 'musica',
+            description: 'objetos da musica'
+        },
+        {
+            id: 6,
+            name: 'construção',
+            description: 'objetos da construção'
+        },
+        {
+            id: 7,
+            name: 'construção',
+            description: 'objetos da construção'
+        },
+        {
+            id: 8,
+            name: 'construção',
+            description: 'objetos da construção'
+        }
+    ]
+
     const navigation = useNavigation();
 
     async function loadContexts(){

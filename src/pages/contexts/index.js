@@ -1,65 +1,76 @@
-import React from 'react';
-import {SafeAreaView, FlatList, View, Text, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {SafeAreaView, ActivityIndicator ,FlatList, Image, View, Text, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import {useNavigation } from '@react-navigation/native';
 
+import api from '../../service/api';
 import styles from './styles';
 
 export default function Home(){
+    
+    const navigation = useNavigation();
 
-    const ids = [0, 1, 2, 3, 4, 5];
+    const [ contexts, setContexts ] = useState([]);
+    const [ loading, setLoading ] = useState(false);
+    const [ total, setTotal ] = useState(0);
+    
+    function back(){
+        navigation.goBack();
+    }
+    
+    async function loadContexts(){
+        if(loading) return;
 
-    const DATA = [
-        {
-            name: 'escola',
-            description: 'objetos da escola'
-        },
-        {
-            name: 'casa',
-            description: 'objetos da casa'
-        },
-        {
-            name: 'aula',
-            description: 'objetos da aula'
-        },
-        {
-            name: 'planta',
-            description: 'objetos da planta'
-        },
-        {
-            name: 'musica',
-            description: 'objetos da musica'
-        },
-        {
-            name: 'construção',
-            description: 'objetos da construção'
-        }
-    ]
+        if(total > 0 && total === contexts.length) return;
+        
+        setLoading(true);
 
-    function renderContext(item){
+        const response = await api.get('contexts');
+        
+        setContexts([...response.data]);
+        setTotal(contexts.length);
+        setLoading(false)
+    }
+
+    function renderContext(item){        
         return (
-                <View style={styles.context}>
-                    <View style={styles.imageContext}>
-                        <Text>{ item.description }</Text>
-                    </View>
-                    <View style={styles.description} >
-                        <Text style={styles.contextName}>{ item.name }</Text>
-                        <TouchableOpacity style={styles.buttonIr} onPress={() => {}}>
-                            <Text style={styles.textButton}> ->  </Text>
-                        </TouchableOpacity>
-                    </View>
+            <View style={styles.context}>
+                <Image source={{uri: item.imageUrl}} style={styles.imageContext} /> 
+                <View style={styles.description} >
+                    <Text style={styles.contextName}>{ item.name }</Text>
+                    <TouchableOpacity style={styles.buttonIr} onPress={() => {}}>
+                        <Text style={styles.textButton}> <Feather name="arrow-right" size={16} />  </Text>
+                    </TouchableOpacity>
                 </View>
+            </View>
         );
     }
 
+    useEffect(() => {
+        loadContexts();
+    }, []);
+
     return (
         <SafeAreaView style={styles.container}>
-            <FlatList 
-                style={styles.listContexts}
-                data={DATA}
-                keyExtractor={() => {}}
-                showsVerticalScrollIndicator={false}
-                renderItem = {({ item }) => renderContext(item)} 
-            /> 
+        { 
+            loading ? <ActivityIndicator size="large" color="rgb(238, 173, 45)"/> : 
+            <>
+                <View style={styles.header}>
+                    <Feather onPress={() => {back()}} name="arrow-left" size={25}/>
+                    <Text style={styles.textHeader} > Contexts </Text>
+                </View>
+
+                <FlatList 
+                    style={styles.listContexts}
+                    data={contexts}
+                    keyExtractor={item => String(item.id)}
+                    showsVerticalScrollIndicator={false}
+                    onEndReached={loadContexts}
+                    onEndReachedThreshold={0.2}
+                    renderItem = {({ item }) => renderContext(item)} 
+                /> 
+            </> 
+        } 
         </SafeAreaView>
     );
 }
-
