@@ -12,6 +12,10 @@ export default function Home(){
     const [user, setUser] = useState('');
 
     function navigateToContexts(user){
+        // if(!user){
+        //     Alert.alert('Campo nome é obrigatório');
+        //     return;
+        // }
         navigation.navigate('Contexts', { user });
     }
     return (

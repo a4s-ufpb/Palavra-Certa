@@ -3,45 +3,29 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#eee",
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'flex-start'
     },
-    form:{
-        alignSelf: 'stretch',
-        paddingHorizontal: 30,
-        marginTop: 30
+    header: {
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        width: '100%',
+        height: '7%',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        marginTop: 38,
+        padding: 8
     },
-    titleMain: {
+    textHeader: {
+        fontSize: 20,
         fontWeight: 'bold',
-        color: "#444",
-        marginBottom: 4
+        marginLeft: 116
     },
-    subscribeMain: {
-        color: "#ddd",
-        marginTop: 4,
-        marginBottom: 8,
-    },
-    textInput: {
-        borderWidth: 1,
-        borderColor: '#ddd',
-        paddingHorizontal: 20,
-        fontSize: 16,
-        height: 44,
-        color: '#444',
-        marginBottom: 20,
-        borderRadius: 10
-    },
-    button: {
-        height: 42,
-        backgroundColor: "#ddd",
+    challenge: {
+        flex: 1,
+        alignItems: 'center',
         justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 15
-    },
-    textButton: {
-        color: '#fff',
-        fontWeight: 'bold',
-        fontSize: 160,
+        width: '100%'
     }
 });

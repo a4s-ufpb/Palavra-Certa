@@ -13,6 +13,7 @@ export default function Home(){
     const [ contexts, setContexts ] = useState([]);
     const [ loading, setLoading ] = useState(false);
     const [ total, setTotal ] = useState(0);
+    const [ idContext, setIdContext ] = useState(0);
     
     function back(){
         navigation.goBack();
@@ -32,13 +33,18 @@ export default function Home(){
         setLoading(false)
     }
 
+    function navigationToChallenge(item){
+        setIdContext(item.id);
+        navigation.navigate('Challenge', {idContext});
+    }
+
     function renderContext(item){        
         return (
             <View style={styles.context}>
                 <Image source={{uri: item.imageUrl}} style={styles.imageContext} /> 
                 <View style={styles.description} >
                     <Text style={styles.contextName}>{ item.name }</Text>
-                    <TouchableOpacity style={styles.buttonIr} onPress={() => {}}>
+                    <TouchableOpacity style={styles.buttonIr} onPress={() => {navigationToChallenge(item)}}>
                         <Text style={styles.textButton}> <Feather name="arrow-right" size={16} />  </Text>
                     </TouchableOpacity>
                 </View>

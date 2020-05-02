@@ -2,46 +2,48 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container:{
-        flex: 1,
+        flex: 0.5,
         backgroundColor: "#fff",
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'flex-start',
+        width: '100%'
     },
-    form:{
-        alignSelf: 'stretch',
-        paddingHorizontal: 30,
-        marginTop: 30
-    },
-    titleMain: {
-        fontWeight: 'bold',
-        color: "#444",
-        marginBottom: 4
-    },
-    subscribeMain: {
-        color: "#ddd",
-        marginTop: 4,
-        marginBottom: 8,
-    },
-    textInput: {
-        borderWidth: 1,
-        borderColor: '#ddd',
-        paddingHorizontal: 20,
-        fontSize: 16,
-        height: 44,
-        color: '#444',
-        marginBottom: 20,
-        borderRadius: 10
-    },
-    button: {
-        height: 42,
-        backgroundColor: "#ddd",
+    pointers: {
+        width: '100%',
+        height: '12%',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#aaa'
+    },
+    textPointers: {
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    imageChallenge:{
+        width: '95%',
+        height: '50%',
+        backgroundColor: 'red',
+        margin: 8,
         borderRadius: 15
     },
-    textButton: {
-        color: '#fff',
+    submit: {
+        width: '95%',
+        flex: 0.9,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    option: {
+        height: 50,
+        width: 80,
+        backgroundColor: "rgba(238, 173, 45, 1)",
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20
+    },
+    textOption: {
+        fontSize: 15,
         fontWeight: 'bold',
-        fontSize: 160,
+        color: '#fff'
     }
 });
