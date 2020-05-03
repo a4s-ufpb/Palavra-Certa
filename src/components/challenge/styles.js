@@ -22,7 +22,8 @@ export default StyleSheet.create({
     imageChallenge:{
         width: '95%',
         height: '50%',
-        backgroundColor: 'red',
+        borderWidth: 2,
+        borderColor: "#000000",
         margin: 8,
         borderRadius: 15
     },
@@ -43,6 +44,7 @@ export default StyleSheet.create({
     },
     textOption: {
         fontSize: 15,
+        textTransform: 'capitalize',
         fontWeight: 'bold',
         color: '#fff'
     }
