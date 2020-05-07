@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {SafeAreaView, ActivityIndicator ,FlatList, Image, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ActivityIndicator ,FlatList, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import {useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import api from '../../service/api';
 import styles from './styles';
@@ -33,8 +33,9 @@ export default function Home(){
         setLoading(false)
     }
 
-    function navigationToChallenge(item){
+    async function navigationToChallenge(item){
         setIdContext(item.id);
+
         navigation.navigate('Challenge', {idContext});
     }
 
@@ -72,7 +73,7 @@ export default function Home(){
                     keyExtractor={item => String(item.id)}
                     showsVerticalScrollIndicator={false}
                     onEndReached={loadContexts}
-                    onEndReachedThreshold={0.2}
+                    onEndReachedThreshold={0.8}
                     renderItem = {({ item }) => renderContext(item)} 
                 /> 
             </> 

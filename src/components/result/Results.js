@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 
 import styles from './styles'
 
@@ -7,14 +7,6 @@ import styles from './styles'
 export default class Challenge extends Component{
     constructor(props){
         super(props);
-    }
-    
-    navigationToContext(){
-        navigation.navigate('Context');
-    }
-    
-    navigationToHome(){
-        navigation.navigate('Home');
     }
 
     render() {
@@ -27,18 +19,8 @@ export default class Challenge extends Component{
                     Acertos: <Text style={styles.textHints} >{ this.props.hints }</Text>
                 </Text>
                 <Text style={styles.textButton}> 
-                    Erros: <Text style={styles.textFails}> { this.props.fails } </Text>
+                    Erros: <Text style={styles.textFails}> { this.props.filures } </Text>
                 </Text>
-
-                <View style={styles.footer}>
-                    <TouchableOpacity style={styles.backContext} onPress={ () => this.navigarionToContexts()}>
-                        <Text style={styles.textButton}> Voltar </Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.backHome} onPress={ () => this.navigarionToHome()}>
-                        <Text style={styles.textButton}> Sair dessa bagaça </Text>
-                    </TouchableOpacity>
-                </View>
             </View>
         </View>
     };

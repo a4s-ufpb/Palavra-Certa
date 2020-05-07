@@ -27,7 +27,9 @@ export default StyleSheet.create({
     context:{
         width: 350,
         height: 125,
-        margin: 3,
+        margin: 6,
+        borderRadius: 10,
+        elevation: 10,
         backgroundColor:'#999',
         justifyContent: 'center',
         alignItems: 'center'

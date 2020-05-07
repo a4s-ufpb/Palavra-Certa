@@ -27,22 +27,30 @@ export default class Challenge extends Component{
                 </View>
 
                 <Image source={imagem} style={styles.imageChallenge} />
-
-                <View style={styles.submit} >
-                    <TouchableOpacity style={styles.option} >
-                        <Text style={styles.textOption}> Opção 1 </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.option} >
-                        <Text style={styles.textOption}> opção 2 </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.option} >
-                        <Text style={styles.textOption}> Opção 3 </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.option} >
-                        <Text style={styles.textOption}> Opção 4 </Text>
-                    </TouchableOpacity>
+                <View style={styles.submit}>
+                    <View />
+                    <View style={styles.submitLeft} >
+                        <View />
+                        <TouchableOpacity style={styles.option} >
+                            <Text style={styles.textOption}> Carroça </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.option} >
+                            <Text style={styles.textOption}> Carro </Text>
+                        </TouchableOpacity>
+                        <View />
+                    </View>
+                    <View style={styles.submitRight} >
+                        <View />
+                        <TouchableOpacity style={styles.option} >
+                            <Text style={styles.textOption}> Pedreiro </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.option} >
+                            <Text style={styles.textOption}> Capacete </Text>
+                        </TouchableOpacity>
+                        <View />
+                    </View>
+                    <View />
                 </View>
-
             </View>
         );
     }

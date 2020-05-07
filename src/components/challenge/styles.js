@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container:{
-        flex: 0.5,
+        flex: 0.7,
         backgroundColor: "#fff",
         alignItems: 'center',
         justifyContent: 'flex-start',
@@ -24,6 +24,8 @@ export default StyleSheet.create({
         height: '50%',
         borderWidth: 2,
         borderColor: "#000000",
+        maxHeight: 500,
+        maxWidth: 500,
         margin: 8,
         borderRadius: 15
     },
@@ -34,9 +36,19 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center'
     },
+    submitLeft: {
+        justifyContent: 'space-between',
+        alignSelf: 'stretch',
+        alignItems: 'center'
+    },
+    submitRight: {
+        justifyContent: 'space-between',
+        alignSelf: 'stretch',
+        alignItems: 'center'
+    },
     option: {
         height: 50,
-        width: 80,
+        width: 150,
         backgroundColor: "rgba(238, 173, 45, 1)",
         justifyContent: 'center',
         alignItems: 'center',

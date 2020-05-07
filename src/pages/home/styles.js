@@ -13,6 +13,7 @@ export default StyleSheet.create({
         margin: 14,
         padding: 10,
         paddingHorizontal: 15,
+        elevation: 25,
         borderRadius: 12,
         shadowOffset: {
             width: -100,
