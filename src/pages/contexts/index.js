@@ -60,7 +60,7 @@ export default function Home(){
     return (
         <SafeAreaView style={styles.container}>
         { 
-            loading ? <ActivityIndicator size="large" color="rgb(238, 173, 45)"/> : 
+            loading ? <ActivityIndicator size="large" color="#CE9692"/> : 
             <>
                 <View style={styles.header}>
                     <Feather onPress={() => {back()}} name="arrow-left" size={25}/>

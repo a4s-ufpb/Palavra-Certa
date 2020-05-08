@@ -3,7 +3,7 @@ import { View, Image, KeyboardAvoidingView, Text, TextInput,TouchableOpacity } f
 import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
-import logo from '../../assets/logoMain.jpg'
+import logo from '../../assets/logoMain.png'
 
 export default function Home(){
     

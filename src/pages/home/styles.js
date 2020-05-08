@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#eee",
+        backgroundColor: "#FDE9E1",
         alignItems: 'center',
         justifyContent: 'center'
     },
     form:{
-        backgroundColor: "#999",
+        backgroundColor: "#4B0E0E",
         alignSelf: 'stretch',
         margin: 14,
         padding: 10,
@@ -24,14 +24,12 @@ export default StyleSheet.create({
     },
     logoMain: {
         alignSelf: 'center',
-        width: 135,
+        width: 350,
         height: 255,
         marginBottom: 8,
         borderRadius: 5
     },
     textInput: {
-        borderWidth: 1,
-        borderColor: '#aaa',
         backgroundColor: '#fff',
         paddingHorizontal: 20,
         fontSize: 16,
@@ -42,13 +40,13 @@ export default StyleSheet.create({
     },
     button: {
         height: 42,
-        backgroundColor: "rgba(238, 173, 45, 0.8)",
+        backgroundColor: "#CE9692",
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 15
     },
     textButton: {
-        color: '#fff',
+        color: '#3B1312',
         fontWeight: 'bold',
         fontSize: 16,
     }

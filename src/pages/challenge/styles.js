@@ -3,15 +3,13 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#eee",
+        backgroundColor: "#FDE9E1",
         alignItems: 'center',
         justifyContent: 'center'
     },
     challengeContainer:{
-        backgroundColor: "#fff",
+        backgroundColor: "#EDB458",
         alignItems: 'center',
-        borderWidth: 1,
-        borderColor: 'red',
         justifyContent: 'flex-start',
         width: '100%',
         height: '50%',
@@ -34,8 +32,6 @@ export default StyleSheet.create({
     },
     challenge: {
         flex: 1,
-        borderWidth: 4,
-        borderColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%'
@@ -44,15 +40,14 @@ export default StyleSheet.create({
     pointers: {
         width: '100%',
         height: '12%',
-        borderWidth: 1,
-        borderColor: 'yellow',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#aaa'
+        backgroundColor: '#4B0E0E'
     },
     textPointers: {
         fontSize: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#FBDFD6'
     },
     imageChallenge:{
         width: '95%',
@@ -84,7 +79,7 @@ export default StyleSheet.create({
     option: {
         height: 40,
         width: 150,
-        backgroundColor: "rgba(238, 173, 45, 1)",
+        backgroundColor: "#CE9692",
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20

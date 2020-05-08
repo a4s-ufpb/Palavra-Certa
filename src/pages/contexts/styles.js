@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#eee",
+        backgroundColor: "#FDE9E1",
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 15
+        marginTop: 31
     },
     header: {
         backgroundColor: 'white',
@@ -22,6 +22,7 @@ export default StyleSheet.create({
     textHeader: {
         fontSize: 20,
         fontWeight: 'bold',
+        color: '#0F110C',
         marginLeft: 116
     },
     context:{
@@ -30,7 +31,7 @@ export default StyleSheet.create({
         margin: 6,
         borderRadius: 10,
         elevation: 10,
-        backgroundColor:'#999',
+        backgroundColor:'#4B0E0E',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -51,7 +52,7 @@ export default StyleSheet.create({
     },
     contextName: {
         fontWeight: 'bold',
-        color: '#222',
+        color: '#FDECEF',
         textTransform: 'capitalize',
         fontSize: 20,
         alignSelf: 'center'
@@ -59,7 +60,7 @@ export default StyleSheet.create({
     buttonIr: {
         height: 32,
         width: 52,
-        backgroundColor: "rgba(238, 173, 45, 1)",
+        backgroundColor: "#CE9692",
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'flex-end',
@@ -67,7 +68,7 @@ export default StyleSheet.create({
         borderRadius: 9
     },
     textButton: {
-        color: '#fff',
+        color: '#3B1312',
         fontWeight: 'bold',
         fontSize: 12,
     }
