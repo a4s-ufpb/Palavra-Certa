@@ -36,6 +36,7 @@ export default StyleSheet.create({
         height: 44,
         color: '#444',
         marginBottom: 20,
+        marginTop: 14,
         borderRadius: 25
     },
     button: {
@@ -46,7 +47,7 @@ export default StyleSheet.create({
         borderRadius: 15
     },
     textButton: {
-        color: '#3B1312',
+        color: '#EBF5DF',
         fontWeight: 'bold',
         fontSize: 16,
     }

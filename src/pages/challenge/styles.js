@@ -28,6 +28,7 @@ export default StyleSheet.create({
     textHeader: {
         fontSize: 20,
         fontWeight: 'bold',
+        textTransform: 'capitalize',
         marginLeft: 116
     },
     challenge: {
@@ -50,10 +51,11 @@ export default StyleSheet.create({
         color: '#FBDFD6'
     },
     imageChallenge:{
-        width: '95%',
-        height: '50%',
+        width: '90%',
+        height: '75%',
         borderWidth: 2,
         borderColor: "#000000",
+        alignSelf: 'center',
         maxHeight: 500,
         maxWidth: 500,
         margin: 8,
@@ -89,5 +91,26 @@ export default StyleSheet.create({
         textTransform: 'capitalize',
         fontWeight: 'bold',
         color: '#fff'
+    },
+    btnSpeak:{
+        height: 30,
+        width: 30,
+        backgroundColor: "#833636",
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'flex-end',
+        borderRadius: 35,
+        marginBottom: 8,
+        borderColor: 'green'
+    },
+    textBtnSpeak:{
+        color: '#fff'
+    },
+    information: {
+        width: '99%',
+        height: '62%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
     }
 });

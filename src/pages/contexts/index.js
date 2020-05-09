@@ -14,6 +14,7 @@ export default function Home(){
     const [ loading, setLoading ] = useState(false);
     const [ total, setTotal ] = useState(0);
     const [ idContext, setIdContext ] = useState(0);
+    const [ nameContext, setNameContext ] = useState("");
     
     function back(){
         navigation.goBack();
@@ -33,10 +34,9 @@ export default function Home(){
         setLoading(false)
     }
 
-    async function navigationToChallenge(item){
-        setIdContext(item.id);
-
-        navigation.navigate('Challenge', {idContext});
+    function navigationToChallenge(name){
+        setNameContext(name);
+        navigation.navigate('Challenge', { name });
     }
 
     function renderContext(item){        
@@ -45,7 +45,7 @@ export default function Home(){
                 <Image source={{uri: item.imageUrl}} style={styles.imageContext} /> 
                 <View style={styles.description} >
                     <Text style={styles.contextName}>{ item.name }</Text>
-                    <TouchableOpacity style={styles.buttonIr} onPress={() => {navigationToChallenge(item)}}>
+                    <TouchableOpacity style={styles.buttonIr} onPress={() => {navigationToChallenge(item.name)}}>
                         <Text style={styles.textButton}> <Feather name="arrow-right" size={16} />  </Text>
                     </TouchableOpacity>
                 </View>
@@ -64,7 +64,7 @@ export default function Home(){
             <>
                 <View style={styles.header}>
                     <Feather onPress={() => {back()}} name="arrow-left" size={25}/>
-                    <Text style={styles.textHeader} > Contexts </Text>
+                    <Text style={styles.textHeader} > Temas </Text>
                 </View>
 
                 <FlatList 

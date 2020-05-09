@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {  SafeAreaView, View, Text, Image, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Lottie from 'lottie-react-native';
 import { Feather } from '@expo/vector-icons';
+import * as Speech from 'expo-speech';
 
 import api from '../../service/api';
 import Result from '../../components/result/Results'
@@ -21,6 +22,9 @@ export default function Home(){
     const [hints, setHints] = useState(0);
     const [failures, setFailures] = useState(0);
     const [count, setCount] = useState(1);
+
+    const route = useRoute();
+    const context = route.params.name;
 
     function back(){
         navigation.goBack();
@@ -57,7 +61,11 @@ export default function Home(){
             </SafeAreaView>
         );
     }
-
+    async function speaking(text){
+        Speech.speak(text, {
+            language: 'pt-BR'
+        });
+    }
     useEffect(() => {
         async function loadChallenges(){
             const response = await api.get("challenges");
@@ -83,9 +91,16 @@ export default function Home(){
                 <View style={styles.pointers} >
                     <Text style={styles.textPointers} >{count}/10</Text>
                 </View>
-
-                <Image source={{uri: item.imageUrl}} style={styles.imageChallenge} />
-
+                <View style={styles.information}>
+                    {item.imageUrl ? 
+                        <Image source={{uri: item.imageUrl}} style={styles.imageChallenge} />
+                    :
+                        <Text>Erro ao carregar imagem</Text>
+                    }
+                    <TouchableOpacity style={styles.btnSpeak} onPress={() => speaking(item.word)} >
+                        <Feather name="volume-2" size={20} style={styles.textBtnSpeak} /> 
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.submit}>
                     <View />
                     <View style={styles.submitLeft} >
@@ -105,7 +120,6 @@ export default function Home(){
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[3], item.word)} >
                             <Text style={styles.textOption}> {arrayMock[3]} </Text>
-                            
                         </TouchableOpacity>
                         <View />
                     </View>
@@ -119,7 +133,7 @@ export default function Home(){
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <Feather onPress={() => {back()}} name="arrow-left" size={25}/>
-                <Text style={styles.textHeader} > Challenge </Text>
+                <Text style={styles.textHeader} > { context } </Text>
             </View>
             <View style={styles.challenge} >
                 {   count < 11 ? 
