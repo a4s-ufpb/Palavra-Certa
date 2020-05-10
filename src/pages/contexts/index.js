@@ -18,7 +18,7 @@ export default function Home(){
     
     function back(){
         navigation.goBack();
-    }
+    }    
     
     async function loadContexts(){
         if(loading) return;
@@ -34,9 +34,18 @@ export default function Home(){
         setLoading(false)
     }
 
-    function navigationToChallenge(name){
-        setNameContext(name);
-        navigation.navigate('Challenge', { name });
+    async function navigationToChallenge(item){
+        setIdContext(item.id);
+        setNameContext(item.name);
+        
+        const responseContext = await api.get(`contexts/${idContext}`);
+
+        const context = responseContext.data;
+        const { challenges } = context; 
+
+        if(challenges.length == 0) navigation.navigate('NotFound');
+
+        else navigation.navigate('Challenge', { challenges });
     }
 
     function renderContext(item){        
@@ -45,7 +54,7 @@ export default function Home(){
                 <Image source={{uri: item.imageUrl}} style={styles.imageContext} /> 
                 <View style={styles.description} >
                     <Text style={styles.contextName}>{ item.name }</Text>
-                    <TouchableOpacity style={styles.buttonIr} onPress={() => {navigationToChallenge(item.name)}}>
+                    <TouchableOpacity style={styles.buttonIr} onPress={() => {navigationToChallenge(item)}}>
                         <Text style={styles.textButton}> <Feather name="arrow-right" size={16} />  </Text>
                     </TouchableOpacity>
                 </View>

@@ -5,7 +5,6 @@ import Lottie from 'lottie-react-native';
 import { Feather } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 
-import api from '../../service/api';
 import Result from '../../components/result/Results'
 
 import generateAnswers from '../../utils/generateAnswers';
@@ -24,7 +23,7 @@ export default function Home(){
     const [count, setCount] = useState(1);
 
     const route = useRoute();
-    const context = route.params.name;
+    const routeChallenges = route.params.challenges;
 
     function back(){
         navigation.goBack();
@@ -61,16 +60,16 @@ export default function Home(){
             </SafeAreaView>
         );
     }
-    async function speaking(text){
+    function speaking(text){
         Speech.speak(text, {
             language: 'pt-BR'
         });
     }
     useEffect(() => {
         async function loadChallenges(){
-            const response = await api.get("challenges");
-            let selecteds = []
-            const allChallenges = response.data;
+            
+            const allChallenges = routeChallenges;
+
             if(allChallenges.length >= 10){
                 selecteds = allChallenges.filter((item, index) => {
                     if(index < 10) return item;

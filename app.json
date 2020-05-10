@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Palavra Certa",
+    "slug": "palavra-certa",
     "platforms": [
       "ios",
       "android",

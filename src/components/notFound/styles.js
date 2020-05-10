@@ -2,25 +2,37 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: "#EDB458",
+        backgroundColor: '#4B0E0E',
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        height: '50%',
+        height: '100%',
         position: 'absolute',
     },
+    information: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '75%',
+      height: '22%',
+    },
+    textInformation: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: '#FBDFD6',
+        fontSize: 25
+    },
     imgSad: {
-        width: '100%',
-        height: '15%',
-        backgroundColor: '#4B0E0E',
+        width: 200,
+        height: 200,
+        backgroundColor: '#EDB458',
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'flex-start'
+        borderRadius: 100,
+        marginBottom: 12,
     },
     textImgSad: {
-        fontWeight: 'bold',
         color: '#fff',
-        fontSize: 35
+        fontSize: 15
     },
     option: {
         height: 55,
@@ -35,15 +47,4 @@ export default StyleSheet.create({
     textOption: {
         color: '#fff'
     },
-    imgAcert: {
-        width: 100,
-        height: 100,
-        borderRadius: 100
-
-    },
-    imgErro: {
-        width: 100,
-        height: 100,
-        borderRadius: 100
-    }
 });
