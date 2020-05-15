@@ -9,7 +9,12 @@ export default StyleSheet.create({
         height: '50%',
         position: 'absolute',
     },
-    imgSad: {
+    inutil: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '100%'
+    },
+    resul: {
         width: '100%',
         height: '15%',
         backgroundColor: '#4B0E0E',
@@ -17,10 +22,26 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'flex-start'
     },
-    textImgSad: {
+    textResul: {
         fontWeight: 'bold',
         color: '#fff',
         fontSize: 35
+    },
+    hints:{    
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    failures:{
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    textHints:{
+        fontWeight: 'bold',
+        fontSize: 50
+    },
+    textFailures:{
+        fontWeight: 'bold',
+        fontSize: 50
     },
     option: {
         height: 55,

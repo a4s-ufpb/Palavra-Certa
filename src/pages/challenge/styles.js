@@ -10,9 +10,10 @@ export default StyleSheet.create({
     challengeContainer:{
         backgroundColor: "#EDB458",
         alignItems: 'center',
+        elevation: 1,
         justifyContent: 'flex-start',
         width: '100%',
-        height: '50%',
+        height: '57%',
         position: 'absolute',
     },
     header: {
@@ -35,7 +36,8 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
+        
     },
 
     pointers: {
@@ -100,7 +102,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'flex-end',
         borderRadius: 35,
-        marginBottom: 8,
+        marginRight: 19,
         borderColor: 'green'
     },
     textBtnSpeak:{
@@ -112,5 +114,53 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column'
+    },
+    imgOption: {
+        flex: 1, 
+        width: '100%',
+        height: '100%', 
+        position: 'absolute', 
+        alignSelf: 'center', 
+        zIndex: 100
+    },
+    showPopup: { 
+        width: '100%', 
+        height: '88%',
+        position: 'absolute'
+    },
+
+    centeredView: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 240
+    },
+    modalView: {
+        width: 250,
+        height: 250,
+        margin: 2,
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        alignSelf: 'center',
+        shadowColor: '#000',
+        elevation: 5
+    },
+    openButton: {
+        borderRadius: 50,
+		height: 40,
+		width: 130,
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: 20
+    },
+    textOpenButton: {
+        color: '#555',
+		fontWeight: 'bold'
+    },
+    textAcert: {
+        fontWeight: 'bold',
+        fontSize: 25,
     }
 });

@@ -6,7 +6,7 @@ import { SafeAreaView, View, Text } from 'react-native';
 
 import styles from './styles';
 
-export default function Home(){
+export default function NotFoundChallenge(){
     
     const navigation = useNavigation();
 

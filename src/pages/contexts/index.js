@@ -6,14 +6,13 @@ import { useNavigation } from '@react-navigation/native';
 import api from '../../service/api';
 import styles from './styles';
 
-export default function Home(){
+export default function Context(){
     
     const navigation = useNavigation();
 
     const [ contexts, setContexts ] = useState([]);
     const [ loading, setLoading ] = useState(false);
     const [ total, setTotal ] = useState(0);
-    const [ idContext, setIdContext ] = useState(0);
     const [ nameContext, setNameContext ] = useState("");
     
     function back(){
@@ -31,21 +30,23 @@ export default function Home(){
         
         setContexts([...response.data]);
         setTotal(contexts.length);
-        setLoading(false)
+        setLoading(false);
     }
 
     async function navigationToChallenge(item){
-        setIdContext(item.id);
-        setNameContext(item.name);
         
-        const responseContext = await api.get(`contexts/${idContext}`);
+        const response = await api.get(`challenges`);
+        const  allchallenges = response.data; 
+        navigation.navigate('Challenge', { challenges: allchallenges, nameContext: item.name });
 
-        const context = responseContext.data;
-        const { challenges } = context; 
+        // const responseContext = await api.get(`contexts/${item.id}`);
+        // const context = responseContext.data;
+        // const { challenges } = context;
 
-        if(challenges.length == 0) navigation.navigate('NotFound');
 
-        else navigation.navigate('Challenge', { challenges });
+        // if(challenges.length == 0) navigation.navigate('NotFound');
+        // else navigation.navigate('Challenge', { challenges, nameContext });
+        
     }
 
     function renderContext(item){        
