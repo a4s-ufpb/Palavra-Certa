@@ -52,7 +52,7 @@ export default StyleSheet.create({
     },
     contextName: {
         fontWeight: 'bold',
-        color: '#FDECEF',
+        color: '#fff',
         textTransform: 'capitalize',
         fontSize: 20,
         alignSelf: 'center'

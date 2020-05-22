@@ -25,6 +25,7 @@ export default function Challenge(){
     const [hints, setHints] = useState(0);
     const [failures, setFailures] = useState(0);
     const [count, setCount] = useState(1);
+    const [total, setTotal] = useState(10);
 
     const route = useRoute();
     const routeChallenges = route.params.challenges;
@@ -51,6 +52,7 @@ export default function Challenge(){
         setModalVisible(true);
         const [challenge, ...rest] = challenges;
         
+        
         setChallenges(rest);
     }
     function speaking(text){
@@ -72,6 +74,7 @@ export default function Challenge(){
                 selecteds = allChallenges;
             }
             setChallenges(selecteds);  
+            setTotal(selecteds.length);
         }
         loadChallenges();
     }, []);
@@ -150,7 +153,7 @@ export default function Challenge(){
                 
             </View>
             <View style={styles.challenge} >
-                {   count < 11 ? 
+                {   count <= total ? 
                     challenges.map((item, index) => loadChallenge(item, index))
                     :
                     <Result hints={hints} failures={failures}/>

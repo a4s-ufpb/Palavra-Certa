@@ -12,13 +12,14 @@ export default StyleSheet.create({
     information: {
       justifyContent: 'center',
       alignItems: 'center',
+      marginTop: 10,
       width: '75%',
       height: '22%',
     },
     textInformation: {
         fontWeight: 'bold',
         textAlign: 'center',
-        color: '#FBDFD6',
+        color: '#fff',
         fontSize: 25
     },
     imgSad: {

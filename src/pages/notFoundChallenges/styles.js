@@ -21,7 +21,7 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         textTransform: 'capitalize',
-        marginLeft: 116
+        marginLeft: 98
     },
     mainContainer:{
         backgroundColor: "#4B0E0E",

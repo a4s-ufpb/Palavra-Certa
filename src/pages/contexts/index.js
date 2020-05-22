@@ -35,17 +35,17 @@ export default function Context(){
 
     async function navigationToChallenge(item){
         
-        const response = await api.get(`challenges`);
-        const  allchallenges = response.data; 
-        navigation.navigate('Challenge', { challenges: allchallenges, nameContext: item.name });
+        // const response = await api.get(`challenges`);
+        // const  allchallenges = response.data; 
+        // navigation.navigate('Challenge', { challenges: allchallenges, nameContext: item.name });
 
-        // const responseContext = await api.get(`contexts/${item.id}`);
-        // const context = responseContext.data;
-        // const { challenges } = context;
+        const responseContext = await api.get(`contexts/${item.id}`);
+        const context = responseContext.data;
+        const { challenges } = context;
 
 
-        // if(challenges.length == 0) navigation.navigate('NotFound');
-        // else navigation.navigate('Challenge', { challenges, nameContext });
+        if(challenges.length == 0) navigation.navigate('NotFound');
+        else navigation.navigate('Challenge', { challenges, nameContext: item.name });
         
     }
 

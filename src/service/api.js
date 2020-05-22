@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://educapi.herokuapp.com'
+    baseURL: 'http://192.168.0.108:8080'
 });
 
 export default api;

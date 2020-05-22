@@ -23,7 +23,7 @@ export default function Home(){
                     placeholder="Informe seu usuário"
                     placeholderTextColor="#aaa"
                     keyboardType="default"
-                    autoCapitalize="none"
+                    autoCapitalize="words"
                     autoCorrect={false}
                     value={user}
                     onChange={user => setUser(user.nativeEvent.text)}
