@@ -79,7 +79,7 @@ export default function Challenge(){
         loadChallenges();
     }, []);
     function loadChallenge(item, index){
-        const arrayMock = generateAnswers(item.word);
+        const arrayMock = generateAnswers(challenges, item.word);
         return (
             <View key={index} style={[styles.challengeContainer, { zIndex: challenges.length - index }]}>
                 <View style={styles.pointers} >
