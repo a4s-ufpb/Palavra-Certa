@@ -71,5 +71,39 @@ export default StyleSheet.create({
         color: '#EBF5DF',
         fontWeight: 'bold',
         fontSize: 12,
+    },
+    centeredView: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 240
+    },
+    modalView: {
+        width: 250,
+        height: 250,
+        margin: 2,
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        alignSelf: 'center',
+        shadowColor: '#000',
+        elevation: 5
+    },
+    openButton: {
+        borderRadius: 50,
+		height: 40,
+		width: 130,
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: 20
+    },
+    textOpenButton: {
+        color: '#555',
+		fontWeight: 'bold'
+    },
+    textAcert: {
+        fontWeight: 'bold',
+        fontSize: 25,
     }
 });

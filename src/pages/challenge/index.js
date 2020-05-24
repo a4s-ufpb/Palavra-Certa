@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, Image, TouchableOpacity, Modal, Alert, TouchableHighlight } from 'react-native';
+import { SafeAreaView, View, Text, Image, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
@@ -75,11 +75,14 @@ export default function Challenge(){
             }
             setChallenges(selecteds);  
             setTotal(selecteds.length);
+            console.log(selecteds)
+            console.log(total)
         }
         loadChallenges();
     }, []);
     function loadChallenge(item, index){
         const arrayMock = generateAnswers(challenges, item.word);
+        console.log(arrayMock);
         return (
             <View key={index} style={[styles.challengeContainer, { zIndex: challenges.length - index }]}>
                 <View style={styles.pointers} >
@@ -136,12 +139,7 @@ export default function Challenge(){
 
                         <Text style={styles.textAcert}> {description} </Text>
 
-                        <TouchableOpacity
-                            style={{ ...styles.openButton, backgroundColor: color}}
-                            onPress={() => {
-                                setModalVisible(!modalVisible);
-                            }}
-                        >
+                        <TouchableOpacity style={{ ...styles.openButton, backgroundColor: color}} onPress={() => setModalVisible(!modalVisible)} >
                             <Text style={styles.textOpenButton}> OK! </Text>
                         </TouchableOpacity>
                     </View>

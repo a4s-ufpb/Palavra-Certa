@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, ActivityIndicator ,FlatList, Image, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ActivityIndicator, Alert, Modal, FlatList, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import api from '../../service/api';
 import styles from './styles';
+import warning from '../../assets/Warning.png';
 
 export default function Context(){
     
@@ -13,24 +14,39 @@ export default function Context(){
     const [ contexts, setContexts ] = useState([]);
     const [ loading, setLoading ] = useState(false);
     const [ total, setTotal ] = useState(0);
-    const [ nameContext, setNameContext ] = useState("");
+    const [modalVisible, setModalVisible] = useState(false);
     
     function back(){
         navigation.goBack();
     }    
     
+    function teste(){
+        Alert.alert(
+            "Erro na conexão",
+            "Não foi possível conectar!",
+            [
+                {
+                    text: 'Ok!',
+                    onPress: () => back()
+                }
+            ],
+            {cancelable: true}
+        );
+    }
+
     async function loadContexts(){
         if(loading) return;
-
+        
         if(total > 0 && total === contexts.length) return;
         
         setLoading(true);
-
-        const response = await api.get('contexts');
         
-        setContexts([...response.data]);
-        setTotal(contexts.length);
-        setLoading(false);
+        api.get('contexts')
+            .then(response => {
+                setContexts([...response.data]);
+                setTotal(contexts.length);
+                setLoading(false);
+            }).catch(erro => teste());
     }
 
     async function navigationToChallenge(item){
@@ -41,8 +57,11 @@ export default function Context(){
 
         const responseContext = await api.get(`contexts/${item.id}`);
         const context = responseContext.data;
+
         const { challenges } = context;
 
+        console.log(challenges);
+        console.log("Indo para challenge")
 
         if(challenges.length == 0) navigation.navigate('NotFound');
         else navigation.navigate('Challenge', { challenges, nameContext: item.name });
@@ -52,6 +71,7 @@ export default function Context(){
     function renderContext(item){        
         return (
             <View style={styles.context}>
+                
                 <Image source={{uri: item.imageUrl}} style={styles.imageContext} /> 
                 <View style={styles.description} >
                     <Text style={styles.contextName}>{ item.name }</Text>
