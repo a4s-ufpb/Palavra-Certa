@@ -51,14 +51,14 @@ export default function Context(){
 
     async function navigationToChallenge(item){
         
-        // const response = await api.get(`challenges`);
-        // const  allchallenges = response.data; 
-        // navigation.navigate('Challenge', { challenges: allchallenges, nameContext: item.name });
+        const response = await api.get(`challenges`);
+        const  allchallenges = response.data; 
+        navigation.navigate('Challenge', { challenges: allchallenges, nameContext: item.name });
 
-        const responseContext = await api.get(`contexts/${item.id}`);
-        const context = responseContext.data;
+        // const responseContext = await api.get(`contexts/${item.id}`);
+        // const context = responseContext.data;
 
-        const { challenges } = context;
+        // const { challenges } = context;
 
         console.log(challenges);
         console.log("Indo para challenge")
