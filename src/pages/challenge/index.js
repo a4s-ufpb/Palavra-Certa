@@ -75,14 +75,12 @@ export default function Challenge(){
             }
             setChallenges(selecteds);  
             setTotal(selecteds.length);
-            console.log(selecteds)
-            console.log(total)
         }
         loadChallenges();
     }, []);
     function loadChallenge(item, index){
-        const arrayMock = generateAnswers(challenges, item.word);
-        console.log(arrayMock);
+        const words = routeChallenges.map(item => item.word);
+        const arrayMock = generateAnswers(words, item.word);
         return (
             <View key={index} style={[styles.challengeContainer, { zIndex: challenges.length - index }]}>
                 <View style={styles.pointers} >

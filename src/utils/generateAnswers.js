@@ -1,10 +1,10 @@
-export default function GenerateAnswer(challenges, challengeAcert){
-    let word = challengeAcert;
+export default function GenerateAnswer(words, wordCorrect){
+    let word = wordCorrect;
     let answers = [];
-    challenges.splice(challenges.indexOf(challengeAcert), 1);
+    words.splice(words.indexOf(wordCorrect), 1);
     for(let i = 0; i < 3; i++){
-        let elementRandom = challenges[Math.floor(Math.random() * challenges.length)];
-        while(answers.find(element => element === elementRandom)) elementRandom = challenges[Math.floor(Math.random() * challenges.length)];
+        let elementRandom = words[Math.floor(Math.random() * words.length)];
+        while(answers.find(element => element === elementRandom)) elementRandom = words[Math.floor(Math.random() * words.length)];
         answers.push(elementRandom);
     }
     if(word) answers.push(word);
