@@ -60,9 +60,6 @@ export default function Context(){
 
         const { challenges } = context;
 
-        console.log(challenges);
-        console.log("Indo para challenge")
-
         if(challenges.length == 0) navigation.navigate('NotFound');
         else navigation.navigate('Challenge', { challenges, nameContext: item.name });
         
