@@ -136,14 +136,14 @@ export default StyleSheet.create({
         marginTop: 240
     },
     modalView: {
-        width: 250,
-        height: 250,
+        width: 261,
         margin: 2,
         backgroundColor: '#fff',
         borderRadius: 20,
         padding: 35,
         alignItems: 'center',
         alignSelf: 'center',
+        textAlign: 'center',
         shadowColor: '#000',
         elevation: 5
     },
@@ -161,6 +161,7 @@ export default StyleSheet.create({
     },
     textAcert: {
         fontWeight: 'bold',
-        fontSize: 25,
+        fontSize: 20,
+        alignSelf: 'center'
     }
 });

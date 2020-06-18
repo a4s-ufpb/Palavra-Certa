@@ -21,6 +21,7 @@ export default function Challenge(){
     const [image, setImage] = useState({});
     const [description, setDescription] = useState("");
     const [color, setColor] = useState("transparent");
+    const [height, setHeight] = useState(0);
     
     const [hints, setHints] = useState(0);
     const [failures, setFailures] = useState(0);
@@ -41,12 +42,14 @@ export default function Challenge(){
             setImage(sucess);
             setDescription("Você acertou!");
             setColor("#AAF577");
+            setHeight(271);
             
         }else{
             setFailures(failures + 1);
             setImage(fail);
-            setDescription("Você errou!");
+            setDescription("Que pena. Continue tentando!");
             setColor("#F29091");
+            setHeight(300);
         }
         setCount(count + 1);
         setModalVisible(true);
@@ -129,7 +132,7 @@ export default function Challenge(){
         <SafeAreaView style={styles.container}>
             <Modal animationType="slide" transparent={true} visible={modalVisible} >
                 <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
+                    <View style={[{height}, styles.modalView]}>
                             <Image 
                             source={image}
                             style={styles.acert}

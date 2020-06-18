@@ -20,7 +20,7 @@ export default function Context(){
         navigation.goBack();
     }    
     
-    function teste(){
+    function viewErroConnection(){
         Alert.alert(
             "Erro na conexão",
             "Não foi possível conectar!",
@@ -46,7 +46,7 @@ export default function Context(){
                 setContexts([...response.data]);
                 setTotal(contexts.length);
                 setLoading(false);
-            }).catch(erro => teste());
+            }).catch(erro => viewErroConnection());
     }
 
     async function navigationToChallenge(item){
