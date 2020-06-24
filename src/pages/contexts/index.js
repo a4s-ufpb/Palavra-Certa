@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, ActivityIndicator, Alert, Modal, FlatList, Image, View, Text, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ActivityIndicator, Alert, FlatList, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import api from '../../service/api';
 import styles from './styles';
-import warning from '../../assets/Warning.png';
 
 export default function Context(){
     
@@ -14,7 +13,6 @@ export default function Context(){
     const [ contexts, setContexts ] = useState([]);
     const [ loading, setLoading ] = useState(false);
     const [ total, setTotal ] = useState(0);
-    const [modalVisible, setModalVisible] = useState(false);
     
     function back(){
         navigation.goBack();
@@ -60,6 +58,8 @@ export default function Context(){
 
         const { challenges } = context;
 
+
+
         if(challenges.length == 0) navigation.navigate('NotFound');
         else navigation.navigate('Challenge', { challenges, nameContext: item.name });
         
@@ -70,7 +70,7 @@ export default function Context(){
             <View style={styles.context}>
                 
                 <Image source={{uri: item.imageUrl}} style={styles.imageContext} /> 
-                <View style={styles.description} >
+                <View style={styles.nameContext} >
                     <Text style={styles.contextName}>{ item.name }</Text>
                     <TouchableOpacity style={styles.buttonIr} onPress={() => {navigationToChallenge(item)}}>
                         <Text style={styles.textButton}> <Feather name="arrow-right" size={16} />  </Text>

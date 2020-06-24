@@ -13,7 +13,7 @@ export default StyleSheet.create({
         elevation: 1,
         justifyContent: 'flex-start',
         width: '100%',
-        height: '57%',
+        height: '67%',
         position: 'absolute',
     },
     header: {
@@ -50,7 +50,7 @@ export default StyleSheet.create({
     textPointers: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FBDFD6'
+        color: '#fff'
     },
     imageChallenge:{
         width: '90%',
@@ -65,7 +65,6 @@ export default StyleSheet.create({
     },
     submit: {
         width: '95%',
-        flex: 0.9,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
@@ -81,18 +80,22 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     option: {
-        height: 40,
+        height: 42,
         width: 150,
         backgroundColor: "#CE9692",
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 20
+        borderRadius: 20,
+        marginBottom: 6,
+        borderWidth: 0.8,
+        elevation: 1
     },
     textOption: {
-        fontSize: 15,
+        fontSize: 14,
         textTransform: 'capitalize',
         fontWeight: 'bold',
-        color: '#fff'
+        color: '#fff',
+        textAlign: 'center'
     },
     btnSpeak:{
         height: 30,
@@ -103,7 +106,8 @@ export default StyleSheet.create({
         alignSelf: 'flex-end',
         borderRadius: 35,
         marginRight: 19,
-        borderColor: 'green'
+        borderColor: 'green',
+        
     },
     textBtnSpeak:{
         color: '#fff'
@@ -123,12 +127,6 @@ export default StyleSheet.create({
         alignSelf: 'center', 
         zIndex: 100
     },
-    showPopup: { 
-        width: '100%', 
-        height: '88%',
-        position: 'absolute'
-    },
-
     centeredView: {
         alignSelf: 'center',
         justifyContent: 'center',
@@ -136,7 +134,7 @@ export default StyleSheet.create({
         marginTop: 240
     },
     modalView: {
-        width: 261,
+        width: 241,
         margin: 2,
         backgroundColor: '#fff',
         borderRadius: 20,

@@ -25,7 +25,7 @@ export default StyleSheet.create({
     textResul: {
         fontWeight: 'bold',
         color: '#fff',
-        fontSize: 35
+        fontSize: 25
     },
     hints:{    
         justifyContent: 'center',
@@ -37,34 +37,35 @@ export default StyleSheet.create({
     },
     textHints:{
         fontWeight: 'bold',
-        fontSize: 50
+        fontSize: 35
     },
     textFailures:{
         fontWeight: 'bold',
-        fontSize: 50
+        fontSize: 35
     },
     option: {
-        height: 55,
-        width: 55,
+        height: 45,
+        width: 45,
         backgroundColor: "#CE9692",
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
         borderRadius: 35,
-        marginBottom: 8
+        marginBottom: 8,
+        marginTop: 2
     },
     textOption: {
         color: '#fff'
     },
     imgAcert: {
-        width: 100,
-        height: 100,
+        width: 95,
+        height: 95,
         borderRadius: 100
 
     },
     imgErro: {
-        width: 100,
-        height: 100,
+        width: 94,
+        height: 94,
         borderRadius: 100
     }
 });

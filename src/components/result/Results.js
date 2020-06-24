@@ -13,28 +13,28 @@ export default class Result extends Component{
     constructor(props){
         super(props);
         this.state = {
-            text: 0
+            hintsPorcents: 0,
+            failurePorcents: 0
         }
     }
+    
+    calculateResultPercents(hints, failures){
+        const total = hints + failures;
+        const totalAcertosPorcentagem = (100 * hints) / total;
+        const totalErrosPorcentagem = 100 - totalAcertosPorcentagem;
+        const arrayReturn = [totalAcertosPorcentagem, totalErrosPorcentagem];
 
-    loadTalk(){
-        let message = "";
-        if (this.props.hints > 7)
-            message = `Você acertou ${this.props.hints} e errou ${this.props.failures}! Meus parabéns!`    
-        else if(this.props.hints > 5)
-            message = `Você acertou ${this.props.hints} e errou ${this.props.failures}! Muito bem!`
-        else
-            message = `Você acertou ${this.props.hints} e errou ${this.props.failures}! Tente melhorar na próxima vez!`
-        this.setState({text: message})
+        return arrayReturn;
     }
 
     async speaking(){
-        await this.loadTalk();
-        Speech.speak(this.state.text, {
+        Speech.speak(`Você acertou ${this.state.hintsPorcents}% e errou ${this.state.failurePorcents}%`, {
             language: 'pt-BR'
         });
     }
     render() {
+       this.state.hintsPorcents = this.calculateResultPercents(this.props.hints, this.props.failures)[0];
+       this.state.failurePorcents = this.calculateResultPercents(this.props.hints, this.props.failures)[1];
        return (
             <View style={styles.container}>
                 <View style={styles.resul}>
@@ -43,15 +43,15 @@ export default class Result extends Component{
                 <View style={styles.inutil}>
                     <View style={styles.hints}>
                         <Image source={Acert} style={ styles.imgAcert }/>
-                        <Text style={styles.textHints} >{ this.props.hints }</Text>
+                        <Text style={styles.textHints} >{ this.state.hintsPorcents }%</Text>
                     </View>
                     <View style={styles.failures}>
                         <Image source={ImgErro} style={ styles.imgErro }/>
-                        <Text style={styles.textFailures}> { this.props.failures } </Text>
+                        <Text style={styles.textFailures}> { this.state.failurePorcents }% </Text>
                     </View>
                 </View>
 
-                <Progress.Bar  color="rgba(0, 168, 107, 1)" unfilledColor="rgba(255, 99, 71, 1)" borderWidth={1} borderColor="#000000" borderRadius={15} width={350} height={35}  ndeterminate={false} progress={(this.props.hints)/10} />
+                <Progress.Bar  color="rgba(0, 168, 107, 1)" unfilledColor="rgba(255, 99, 71, 1)" borderWidth={1} borderColor="#000000" borderRadius={15} width={325} height={35}  ndeterminate={false} progress={(this.props.hints/10)} />
                 
                 <TouchableOpacity style={styles.option} onPress={() => this.speaking()} >
                     <Feather name="volume-2" size={25} style={styles.textOption} /> 

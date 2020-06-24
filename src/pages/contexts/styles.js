@@ -26,7 +26,7 @@ export default StyleSheet.create({
         marginLeft: 116
     },
     context:{
-        width: 350,
+        width: 342,
         height: 125,
         margin: 6,
         borderRadius: 10,
@@ -43,7 +43,7 @@ export default StyleSheet.create({
         marginLeft: 8,
         borderRadius: 5
     },
-    description: {
+    nameContext: {
         alignSelf: 'flex-end',
         justifyContent: 'center',
         width: '80%',
@@ -65,10 +65,11 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'flex-end',
         marginRight: 11,
-        borderRadius: 9
+        borderRadius: 9,
+        marginTop: 6
     },
     textButton: {
-        color: '#EBF5DF',
+        color: '#fff',
         fontWeight: 'bold',
         fontSize: 12,
     },
@@ -77,33 +78,5 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 240
-    },
-    modalView: {
-        width: 250,
-        height: 250,
-        margin: 2,
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        padding: 35,
-        alignItems: 'center',
-        alignSelf: 'center',
-        shadowColor: '#000',
-        elevation: 5
-    },
-    openButton: {
-        borderRadius: 50,
-		height: 40,
-		width: 130,
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginTop: 20
-    },
-    textOpenButton: {
-        color: '#555',
-		fontWeight: 'bold'
-    },
-    textAcert: {
-        fontWeight: 'bold',
-        fontSize: 25,
     }
 });
