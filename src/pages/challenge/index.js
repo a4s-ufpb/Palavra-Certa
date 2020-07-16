@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, Text, Image, TouchableOpacity, Modal} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import React, { useState, useEffect, useRef } from 'react';
+import { SafeAreaView, View, Text, Image, TouchableOpacity, Modal, Animated } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 
 import Result from '../../components/result/Results';
-
 import generateAnswers from '../../utils/generateAnswers';
 
 import styles from './styles';
 import sucess from '../../assets/Success.png';
 import fail from '../../assets/Error.png';
+import warning from '../../assets/Warning.png'
 
 export default function Challenge(){
     const navigation = useNavigation();
@@ -27,12 +26,50 @@ export default function Challenge(){
     const [count, setCount] = useState(1);
     const [total, setTotal] = useState(10);
 
+    const [restart, setRestart] = useState(true);
+
     const route = useRoute();
     const routeChallenges = route.params.challenges;
     const context = route.params.nameContext;
 
+    const fedeAnim = useRef(new Animated.Value(0)).current;
+   
+    const HorizontalProgressBar = () => {        
+        return (
+              <Animated.View style={[styles.barProgress, {
+                  width: fedeAnim
+              }]} />
+        );
+      };
+
+    useEffect(() => {
+        Animated.timing(
+            fedeAnim,
+            {
+                toValue: 395,
+                duration: 5000
+            }
+        ).start();
+        checkTime();
+    }, [restart]);
+
     function back(){
         navigation.goBack();
+    }
+
+    function viewModal(image, description, heigth){
+        setImage(image);
+        setDescription(description);
+        setHeight(heigth);        
+        setModalVisible(true);
+        hiddenModal();    
+    }
+
+    function checkTime(){
+        setTimeout(() => {
+            viewModal(warning, "Tempo acabado", 250);
+            challengeAcert("", "", true);
+        }, 5000)
     }
 
     function hiddenModal(){
@@ -41,26 +78,28 @@ export default function Challenge(){
         }, 1000)
     }
 
-    async function challengeAcert(option1, option2){
+    async function challengeAcert(option1, option2, flag){
+        if(flag){ // IF TIME OUT
+            setCount(count + 1);
+            const [challenge, ...rest] = challenges;
+            setChallenges(rest);
+            return;
+        }
         if(option1 === option2) {
             setHints(hints + 1);
-            setImage(sucess);
-            setDescription("Você acertou!");
-            setHeight(271);            
+            viewModal(sucess, "Você acertou!", 271);
         }else{
             setFailures(failures + 1);
-            setImage(fail);
-            setDescription("Que pena, Continue tentando!");
-            setHeight(300);
+            viewModal(fail,"Que pena, Continue tentando!", 300);
         }
         setCount(count + 1);
-        setModalVisible(true);
-        hiddenModal();
+        setRestart(true);
+        
         const [challenge, ...rest] = challenges;
-        
-        
+
         setChallenges(rest);
     }
+
     function speaking(text){
         Speech.speak(text, {
             language: 'pt-BR'
@@ -68,13 +107,12 @@ export default function Challenge(){
     }
 
     useEffect(() => {
-
         async function loadChallenges(){
             let selecteds;
             const allChallenges = routeChallenges;
             if(allChallenges.length >= 10){
                 selecteds = allChallenges.filter((item, index) => {
-                    if(index < 10) return item;
+                    if(index < 10 && item.imageUrl !== null) return item;
                 });
             }else{
                 selecteds = allChallenges;
@@ -83,7 +121,9 @@ export default function Challenge(){
             setTotal(selecteds.length);
         }
         loadChallenges();
+        setRestart(false);
     }, []);
+
     function loadChallenge(item, index){
         const words = routeChallenges.map(item => item.word);
         const arrayMock = generateAnswers(words, item.word);
@@ -92,9 +132,9 @@ export default function Challenge(){
                 <View style={styles.pointers} >
                     <Text style={styles.textPointers} >{count}/10</Text>
                 </View>
-                <View style={styles.time} >
-                   
-                </View>
+
+                <HorizontalProgressBar restart={restart}/>
+                
                 <View style={styles.information}>
                     {   item.imageUrl ? 
                         <Image source={{uri: item.imageUrl}} style={styles.imageChallenge} />
@@ -110,20 +150,20 @@ export default function Challenge(){
                     <View />
                     <View style={styles.submitLeft} >
                         <View />
-                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[0], item.word)}>
+                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[0], item.word, false)}>
                             <Text style={styles.textOption}> {arrayMock[0]} </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[1], item.word)} >
+                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[1], item.word, false)} >
                             <Text style={styles.textOption}> {arrayMock[1]} </Text>
                         </TouchableOpacity>
                         <View />
                     </View>
                     <View style={styles.submitRight} >
                         <View />
-                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[2], item.word)} >
+                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[2], item.word, false)} >
                             <Text style={styles.textOption}> {arrayMock[2]} </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[3], item.word)} >
+                        <TouchableOpacity style={styles.option} onPress={() => challengeAcert(arrayMock[3], item.word, false)} >
                             <Text style={styles.textOption}> {arrayMock[3]} </Text>
                         </TouchableOpacity>
                         <View />
@@ -138,7 +178,7 @@ export default function Challenge(){
         <SafeAreaView style={styles.container}>
             <Modal animationType="slide" transparent={true} visible={modalVisible} >
                 <View style={styles.centeredView}>
-                    <View style={[{height: 241}, styles.modalView]}>
+                    <View style={[{height}, styles.modalView]}>
                             <Image 
                             source={image}
                             style={styles.acert}

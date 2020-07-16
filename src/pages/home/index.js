@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Image, KeyboardAvoidingView, Text, TextInput,TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
-import logo from '../../assets/logoMain.png'
+import logo from '../../assets/logoMain.png';
+
 
 export default function Home(){
     

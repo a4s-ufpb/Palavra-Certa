@@ -51,7 +51,7 @@ export default class Result extends Component{
                     </View>
                 </View>
 
-                <Progress.Bar  color="rgba(0, 168, 107, 1)" unfilledColor="rgba(255, 99, 71, 1)" borderWidth={1} borderColor="#000000" borderRadius={15} width={325} height={35}  ndeterminate={false} progress={(this.props.hints/10)} />
+                <Progress.Bar  color="rgba(0, 168, 107, 1)" unfilledColor="rgba(255, 99, 71, 1)" borderWidth={1} borderColor="#000000" borderRadius={15} width={325} height={35}  indeterminate={false} progress={(this.props.hints/10)} />
                 
                 <TouchableOpacity style={styles.option} onPress={() => this.speaking()} >
                     <Feather name="volume-2" size={25} style={styles.textOption} /> 

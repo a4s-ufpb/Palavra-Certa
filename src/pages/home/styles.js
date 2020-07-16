@@ -50,48 +50,14 @@ export default StyleSheet.create({
         borderRadius: 15
     },
     textButton: {
-        color: '#EBF5DF',
-        fontWeight: 'bold',
-        fontSize: 16,
-    },
-    showPopup: { 
-        width: '100%', 
-        height: '88%',
-        position: 'absolute',
-        backgroundColor: '#000'
-    },
-    centeredView: {
-        alignSelf: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 240
-    },
-    modalView: {
-        width: 250,
-        height: 250,
-        margin: 2,
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        padding: 35,
-        alignItems: 'center',
-        alignSelf: 'center',
-        shadowColor: '#000',
-        elevation: 5
-    },
-    openButton: {
-        borderRadius: 50,
-		height: 40,
-		width: 130,
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginTop: 20
-    },
-    textStyle: {
         color: '#fff',
-		fontWeight: 'bold'
-    },
-    textAcert: {
         fontWeight: 'bold',
-        fontSize: 25,
+        fontSize: 18,
+    },
+    barProgress: {
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#000',
+        height: 10
     }
 });

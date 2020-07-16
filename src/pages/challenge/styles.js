@@ -161,5 +161,12 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         alignSelf: 'center'
+    },
+    barProgress: {
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: '#000',
+        borderWidth: 1,
+        height: 4
     }
 });
