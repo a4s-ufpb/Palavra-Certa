@@ -27,7 +27,7 @@ export default StyleSheet.create({
     },
     logoMain: {
         alignSelf: 'center',
-        width: 350,
+        width: 310,
         height: 255,
         marginBottom: 8,
         borderRadius: 5
@@ -53,11 +53,5 @@ export default StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 18,
-    },
-    barProgress: {
-        alignItems: 'center', 
-        justifyContent: 'center',
-        backgroundColor: '#000',
-        height: 10
     }
 });

@@ -21,7 +21,7 @@ export default function Home(){
                 <Image source={logo} style={styles.logoMain}/>                
                 <TextInput 
                     style={styles.textInput}
-                    placeholder="Informe seu usuário"
+                    placeholder="Informe seu nome"
                     placeholderTextColor="#aaa"
                     keyboardType="default"
                     autoCapitalize="words"

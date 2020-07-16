@@ -8,6 +8,7 @@ import Result from '../../components/result/Results';
 import generateAnswers from '../../utils/generateAnswers';
 
 import styles from './styles';
+
 import sucess from '../../assets/Success.png';
 import fail from '../../assets/Error.png';
 import warning from '../../assets/Warning.png'
@@ -36,22 +37,11 @@ export default function Challenge(){
    
     const HorizontalProgressBar = () => {        
         return (
-              <Animated.View style={[styles.barProgress, {
-                  width: fedeAnim
-              }]} />
+            <Animated.View style={[styles.barProgress, {
+                width: fedeAnim
+            }]} />
         );
       };
-
-    useEffect(() => {
-        Animated.timing(
-            fedeAnim,
-            {
-                toValue: 395,
-                duration: 5000
-            }
-        ).start();
-        checkTime();
-    }, [restart]);
 
     function back(){
         navigation.goBack();
@@ -69,7 +59,9 @@ export default function Challenge(){
         setTimeout(() => {
             viewModal(warning, "Tempo acabado", 250);
             challengeAcert("", "", true);
-        }, 5000)
+            if(count <= 10) setRestart(!restart);
+            console.log(count)
+        }, 5000);      
     }
 
     function hiddenModal(){
@@ -93,7 +85,7 @@ export default function Challenge(){
             viewModal(fail,"Que pena, Continue tentando!", 300);
         }
         setCount(count + 1);
-        setRestart(true);
+        setRestart(!restart);
         
         const [challenge, ...rest] = challenges;
 
@@ -121,8 +113,19 @@ export default function Challenge(){
             setTotal(selecteds.length);
         }
         loadChallenges();
-        setRestart(false);
+        setRestart(!restart);
     }, []);
+    
+    useEffect(() => {
+        Animated.timing(
+            fedeAnim,
+            {
+                toValue: 395,
+                duration: 5000
+            }
+        ).start();
+        checkTime();
+    }, [restart]);
 
     function loadChallenge(item, index){
         const words = routeChallenges.map(item => item.word);
