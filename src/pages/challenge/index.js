@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SafeAreaView, View, Text, Image, TouchableOpacity, Modal, Animated } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, View, Text, Image, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
@@ -11,7 +11,6 @@ import styles from './styles';
 
 import sucess from '../../assets/Success.png';
 import fail from '../../assets/Error.png';
-import warning from '../../assets/Warning.png'
 
 export default function Challenge(){
     const navigation = useNavigation();
@@ -27,21 +26,9 @@ export default function Challenge(){
     const [count, setCount] = useState(1);
     const [total, setTotal] = useState(10);
 
-    const [restart, setRestart] = useState(true);
-
     const route = useRoute();
     const routeChallenges = route.params.challenges;
     const context = route.params.nameContext;
-
-    const fedeAnim = useRef(new Animated.Value(0)).current;
-   
-    const HorizontalProgressBar = () => {        
-        return (
-            <Animated.View style={[styles.barProgress, {
-                width: fedeAnim
-            }]} />
-        );
-      };
 
     function back(){
         navigation.goBack();
@@ -52,16 +39,7 @@ export default function Challenge(){
         setDescription(description);
         setHeight(heigth);        
         setModalVisible(true);
-        hiddenModal();    
-    }
-
-    function checkTime(){
-        setTimeout(() => {
-            viewModal(warning, "Tempo acabado", 250);
-            challengeAcert("", "", true);
-            if(count <= 10) setRestart(!restart);
-            console.log(count)
-        }, 5000);      
+        // hiddenModal();    
     }
 
     function hiddenModal(){
@@ -79,13 +57,12 @@ export default function Challenge(){
         }
         if(option1 === option2) {
             setHints(hints + 1);
-            viewModal(sucess, "Você acertou!", 271);
+            viewModal(sucess, "Você acertou!", 200);
         }else{
             setFailures(failures + 1);
-            viewModal(fail,"Que pena, Continue tentando!", 300);
+            viewModal(fail,"Que pena, Continue tentando!", 230);
         }
         setCount(count + 1);
-        setRestart(!restart);
         
         const [challenge, ...rest] = challenges;
 
@@ -113,19 +90,7 @@ export default function Challenge(){
             setTotal(selecteds.length);
         }
         loadChallenges();
-        setRestart(!restart);
     }, []);
-    
-    useEffect(() => {
-        Animated.timing(
-            fedeAnim,
-            {
-                toValue: 395,
-                duration: 5000
-            }
-        ).start();
-        checkTime();
-    }, [restart]);
 
     function loadChallenge(item, index){
         const words = routeChallenges.map(item => item.word);
@@ -135,8 +100,6 @@ export default function Challenge(){
                 <View style={styles.pointers} >
                     <Text style={styles.textPointers} >{count}/10</Text>
                 </View>
-
-                <HorizontalProgressBar restart={restart}/>
                 
                 <View style={styles.information}>
                     {   item.imageUrl ? 
@@ -181,12 +144,12 @@ export default function Challenge(){
         <SafeAreaView style={styles.container}>
             <Modal animationType="slide" transparent={true} visible={modalVisible} >
                 <View style={styles.centeredView}>
-                    <View style={[{height}, styles.modalView]}>
-                            <Image 
+                    <View style={[{height: 200}, styles.modalView]}>
+                            <Image
                             source={image}
-                            style={styles.acert}
+                            style={styles.imgModal}
                             />
-                        <Text style={styles.textAcert}> {description} </Text>
+                        <Text style={styles.textModal}> {description} </Text>
                     </View>
                 </View>
             </Modal>

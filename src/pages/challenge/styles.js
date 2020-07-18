@@ -131,42 +131,24 @@ export default StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 240
+        marginTop: 240,
     },
     modalView: {
-        width: 241,
+        width: 200,
         margin: 2,
         backgroundColor: '#fff',
         borderRadius: 20,
         padding: 35,
+        paddingTop: 7,
         alignItems: 'center',
         alignSelf: 'center',
         textAlign: 'center',
         shadowColor: '#000',
         elevation: 5
     },
-    openButton: {
-        borderRadius: 50,
-		height: 40,
-		width: 130,
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginTop: 20
-    },
-    textOpenButton: {
-        color: '#555',
-		fontWeight: 'bold'
-    },
-    textAcert: {
+    textModal: {
         fontWeight: 'bold',
         fontSize: 20,
-        alignSelf: 'center'
-    },
-    barProgress: {
-        alignItems: 'center', 
-        justifyContent: 'center',
-        backgroundColor: '#000',
-        borderWidth: 1,
-        height: 4
+        paddingTop: 8
     }
 });
