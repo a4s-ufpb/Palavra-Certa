@@ -39,7 +39,7 @@ export default function Challenge(){
         setDescription(description);
         setHeight(heigth);        
         setModalVisible(true);
-        // hiddenModal();    
+        hiddenModal();    
     }
 
     function hiddenModal(){
@@ -60,7 +60,7 @@ export default function Challenge(){
             viewModal(sucess, "Você acertou!", 200);
         }else{
             setFailures(failures + 1);
-            viewModal(fail,"Que pena, Continue tentando!", 230);
+            viewModal(fail,"Foi quase!", 200);
         }
         setCount(count + 1);
         
@@ -144,7 +144,7 @@ export default function Challenge(){
         <SafeAreaView style={styles.container}>
             <Modal animationType="slide" transparent={true} visible={modalVisible} >
                 <View style={styles.centeredView}>
-                    <View style={[{height: 200}, styles.modalView]}>
+                    <View style={[{height}, styles.modalView]}>
                             <Image
                             source={image}
                             style={styles.imgModal}

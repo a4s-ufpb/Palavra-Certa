@@ -67,5 +67,18 @@ export default StyleSheet.create({
         width: 94,
         height: 94,
         borderRadius: 100
+    },
+    viewLegendProgressBar: {
+        marginTop: -26, 
+        display: 'flex', 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        justifyContent: 'flex-start', 
+        width: 325
+    },
+    textLegendProgressBar:{
+        fontSize: 25,
+        fontWeight: 'bold'
     }
+    
 });

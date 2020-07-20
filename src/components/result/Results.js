@@ -40,18 +40,26 @@ export default class Result extends Component{
                 <View style={styles.resul}>
                     <Text style={styles.textResul} > Resultado </Text>
                 </View>
+                
                 <View style={styles.inutil}>
                     <View style={styles.hints}>
                         <Image source={Acert} style={ styles.imgAcert }/>
-                        <Text style={styles.textHints} >{ this.state.hintsPorcents }%</Text>
+                        {/* <Text style={styles.textHints} >{ this.state.hintsPorcents }%</Text> */}
                     </View>
                     <View style={styles.failures}>
                         <Image source={ImgErro} style={ styles.imgErro }/>
-                        <Text style={styles.textFailures}> { this.state.failurePorcents }% </Text>
+                        {/* <Text style={styles.textFailures}> { this.state.failurePorcents }% </Text> */}
                     </View>
                 </View>
 
-                <Progress.Bar  color="rgba(0, 168, 107, 1)" unfilledColor="rgba(255, 99, 71, 1)" borderWidth={1} borderColor="#000000" borderRadius={15} width={325} height={35}  indeterminate={false} progress={(this.props.hints/10)} />
+                    
+                <Progress.Bar  color="rgb(0, 168, 107)" unfilledColor="rgba(255, 99, 71, 1)" animated={true} useNativeDriver={true} animationConfig={{bounciness: 0}} animationType="timing" borderWidth={1} borderColor="#000000" borderRadius={15} width={325} height={35}  indeterminate={false} progress={(this.props.hints/10)} />
+                <View style={styles.viewLegendProgressBar}>
+                    <View style={[styles.progress, {width: this.props.hints * 30}]}/>
+                    <View style={{width: 55}}>
+                        <Text style={styles.textLegendProgressBar}>{this.props.hints * 10}%</Text>
+                    </View>
+                </View> 
                 
                 <TouchableOpacity style={styles.option} onPress={() => this.speaking()} >
                     <Feather name="volume-2" size={25} style={styles.textOption} /> 
