@@ -23,8 +23,7 @@ export default class Result extends Component{
         const totalAcertosPorcentagem = (100 * hints) / total;
         const totalErrosPorcentagem = 100 - totalAcertosPorcentagem;
         const arrayReturn = [totalAcertosPorcentagem, totalErrosPorcentagem];
-
-        return arrayReturn;
+        return arrayReturn;''
     }
 
     async speaking(){
@@ -56,8 +55,8 @@ export default class Result extends Component{
                 <Progress.Bar  color="rgb(0, 168, 107)" unfilledColor="rgba(255, 99, 71, 1)" animated={true} useNativeDriver={true} animationConfig={{bounciness: 0}} animationType="timing" borderWidth={1} borderColor="#000000" borderRadius={15} width={325} height={35}  indeterminate={false} progress={(this.props.hints/10)} />
                 <View style={styles.viewLegendProgressBar}>
                     <View style={[styles.progress, {width: this.props.hints * 30}]}/>
-                    <View style={{width: 55}}>
-                        <Text style={styles.textLegendProgressBar}>{this.props.hints * 10}%</Text>
+                    <View style={{width: 105}}>
+                        <Text style={styles.textLegendProgressBar}>{this.state.hintsPorcents}%</Text>
                     </View>
                 </View> 
                 
